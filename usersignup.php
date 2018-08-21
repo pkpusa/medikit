@@ -171,12 +171,6 @@ function check1()
     font-family: 'Source Sans Pro', sans-serif;" type="password" name="cpsd" placeholder="Re-Enter Password" required="" onblur="return confirm1()"><span id="cps" ></span>
 				
 			</div>
-            
-           
-			
-
-			
-
 			<input type="submit" value="Login">
 			<input type="reset" value="Sign Up">
 			<div class="clear"></div>
