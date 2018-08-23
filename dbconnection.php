@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+//session_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password=" "; // Mysql password

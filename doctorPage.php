@@ -166,6 +166,7 @@ $result = $conn->query($sql);
 			<div class="clear"></div>
 			</table>
 			<input type="submit" value="Logout">
+			<input type ="reset" value ="Home Page" onclick="Redirect();">
 			
 		</form>
 		
@@ -189,7 +190,12 @@ $result = $conn->query($sql);
 	<!-- //Calendar Js -->
 
 </body>
-
+<script>
+function Redirect()	
+{
+	window.location="home.php";
+}
+</script>
 </html>
 <!--
 <?php

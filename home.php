@@ -42,14 +42,15 @@ body {
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 20px 10px;
+  padding-top :20px;
+	padding-bottom :15px;
 }
 
 .header a {
   float: left;
   color: black;
   text-align: center;
-  padding: 12px;
+  padding: 15px;;
   text-decoration: none;
   font-size: 18px; 
   line-height: 25px;
@@ -88,12 +89,15 @@ body {
 img{
     width :250px;
     height :100px;
+		background-color :aqua;
+		border-radius :20px;
+		padding-bottom : 20px;
 }
 </style>
 </head>
 <body>
 <div class="header">
-  <a href="#default" class="logo"><img src = "abcd.jpg" alt="Flowers in Chania"></a>
+  <a href="#default" class="logo">MediKit</a>
   <div class="header-right">
     <a class="active" href="#home">Home</a>
     <a href="#contact">Contact</a>

@@ -1,3 +1,6 @@
+<?php 
+include "navbar.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +91,7 @@ h1{
 
 <h1>MediKit ADMIN Login</h1>
 <div class="maindiv">
-<form action="/action_page.php">
+<form action="admincheck.php?value=0" method="post">
   <div class="imgcontainer">
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
   </div>
@@ -99,17 +102,23 @@ h1{
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
-        
+    <?php
+	$val=$_GET['value'];
+	if($val==2){
+	?>
+    <h5><span style ="color : red; font">Incorrect Mail Id Or Password</span></h5>
+	<?php
+	}
+	
+
+?>
     <button type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
+  
 </form>
 </div>
 </body>

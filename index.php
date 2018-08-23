@@ -1,5 +1,6 @@
+
 <?php
-session_start();
+ session_start();
 ?>
 <!--
 Author: W3layouts
@@ -29,47 +30,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />  <!-- time-picker-CSS -->
 <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
 <!--//fonts-->
 
 
 </head>
 <body>
-<div class="banner-top">
-	<div class="banner-header">
-		<!--header-->
-		<div class="header">
-		<div class="container-fluid">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header navbar-left">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="w3_navigation_pos">
-						<h1><a href="index.html">MediKit</a></h1>
-					</div>
-				</div>
-      
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-					<nav>
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li><a href="about.html">About Us</a></li>
-							<!--<li><a href="services.html">Our Services</a></li>-->
-							<li><a href="gallery.html">Our Doctors</a></li>
-							<!--<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown"> <b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a href="icons.html"></a></li>
-                                        <li></li>
-										<li><a href="typography.html">Typography</a></li>
-									</ul>
-							  </li>-->
-							<li><a href="contact.html">Contact</a></li>
-                            <li>          <div style="float:right; font-size:20px;margin-top:20px;">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">MediKit</a>
+    </div>
+	<ul style="float:right; font-size:20px;margin-top:20px;">
+	<li>          <div style="float:right; font-size:20px;margin-top:20px;">
 			<p style ="color:white; font-size:25px;">
             <?php
 			 if(isset($_SESSION['userid']))	
@@ -85,6 +58,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			
 			</div></li>
+    </ul>
+</div>
+</nav>
+<div class="banner-top">
+	<div class="banner-header">
+		<!--header-->
+		<div class="header">
+		<div class="container-fluid">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="w3_navigation_pos">
+						<h1><a href="index.html">MEDIKIT</a></h1>
+					</div>
+				</div>
+      
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					<nav>
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="home.php?value=0">Home</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="services.html">Our Services</a></li>
+							
+							<li><a href="gallery.html">Our Doctors</a></li>
+							
+							<li><a href="contact.html">Contact</a></li>
+							<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown"> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="icons.html"></a></li>
+                                        <li></li>
+										<li><a href="typography.html">Typography</a></li>
+									</ul>
+							  </li>
+							
+                            
 						</ul>
 					</nav>
 				</div>

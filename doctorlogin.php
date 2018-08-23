@@ -104,7 +104,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			
 
 			<input type="submit" value="Login">
-			<input type="reset" value="Sign Up">
+			<input type="reset" value="HOME" onclick="Redirect();">
 			<div class="clear"></div>
 		</form>
 		<!--// Form starts here -->
@@ -127,7 +127,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //Calendar Js -->
 
 </body>
+<script>
+function Redirect()
+{
+	window.location="home.php";
+}
 
+</script>
 </html>
 <?php
 if(isset($_SESSION['error']))

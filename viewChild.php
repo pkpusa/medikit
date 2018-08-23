@@ -4,7 +4,10 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php 
 
+require "usrsessioncontrol.php";
+?>
 
 <!DOCTYPE HTML>
 <html>
@@ -46,10 +49,10 @@ function myFunction() {
 	<div class="register-form-w3layouts">
         <div class ="copyright">
             
-            <p>
+            <p> </p>
             <?php
 
-
+/*
 session_start();
 if(isset($_SESSION['name'])){
 	$user = $_SESSION['userid'];
@@ -57,16 +60,9 @@ if(isset($_SESSION['name'])){
 	else{
 		header("location:userlogin.php?value=0");
 		
-	}
+	}*/
 
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=" "; // Mysql password
-$db_name="medikit"; // Database name
-
-$conn=mysqli_connect("$host", "$username")or die("cannot connect");
-
-mysqli_select_db($conn,$db_name)or die("cannot select DB");
+require "dbconnection.php";
 
 $tbl_name="tblchild";
 /*
