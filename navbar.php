@@ -63,9 +63,9 @@ img{
 </head>
 <body>
 <div class="header">
-  <a href="#default" class="logo">MediKit</a>
+  <a href="adminpage.php?value=0" class="logo">MediKit</a>
   <div class="header-right">
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="index.php?value=0">Home</a>
     <a href="#contact">Contact</a>
     <a href="#about">About</a>
   </div>

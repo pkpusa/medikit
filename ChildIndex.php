@@ -6,7 +6,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php 
 	require "usrsessioncontrol.php";
+	include "testing.php";
 ?>
+
 <?php
 	$val=$_GET['value'];
 	if($val==1){

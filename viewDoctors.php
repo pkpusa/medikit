@@ -1,10 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['doct_name'])){
-	$doctor = $_SESSION['doctorID'];
+if(isset($_SESSION['admin_name'])){
+	$doctor = $_SESSION['admin_id'];
 }
 	else{
-		header("location:doctorlogin.php?value=0");
+		header("location:adminlogin.php?value=0");
 		
 	}
 ?>
@@ -62,6 +62,7 @@ td,th {
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(odd){background-color: #f2f2f2;}
 
 tr:hover {background-color: #ddd;}
 
@@ -73,21 +74,11 @@ th {
     color: white;
 }
 </style>
-
+<?php include "navbar.php"; ?>
 <body>
 		<div style="float:right; font-size:20px;margin-top:20px;">
 			<p style ="color:white; font-size:25px;">
-            <?php
-			 if(isset($_SESSION['doctorID']))	
-			 {
-			 echo "Welcome,   ".$_SESSION['doct_name']."&nbsp;&nbsp;&nbsp;<a href=\"doctorlogout.php\" class=\"btn btn-info\">Logout</a>";
-			 }
-			 else
-			 {
-                ?></p>
-				<a href="doctorlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="usersignup.php?value=0" class="btn btn-info">Signup</a>
-			<?php } ?>
+            
 			
 			
 			</div
@@ -115,11 +106,21 @@ th {
 	?>
 
 	<!--background-->
-    <h1><a href ="localhost/web/index.html"> </a>MediKit Doctor Login Portal</h1>
+    <h1><a href ="localhost/web/index.html"> </a><?php
+			 if(isset($_SESSION['admin_id']))	
+			 {
+			 echo "Welcome,   ".$_SESSION['admin_name']."&nbsp;&nbsp;&nbsp;<a href=\"adminlogout.php\" class=\"btn btn-info\">Logout</a>";
+			 }
+			 else
+			 {
+                ?></p>
+				<a href="adminlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="home.php?value=0" class="btn btn-info">HomePage</a>
+			<?php } ?></h1>
 	<div class="register-form-w3layouts">
 		<!-- Form starts here -->
 		<form action="doctorlogout.php" method="post">
-		<table><tr><th>S No. </th><th>Name </th><th>email</th><th>date</th><th>timeslot</th><th>		</th></tr>
+		<table><tr><th>S No. </th><th>Name </th><th>email</th><th>Phone</th><th>Specialization</th><th>		</th></tr>
 		<?php
 $servername = "localhost";
 $username = "root";
@@ -133,7 +134,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM booking WHERE doctorID = $doctor";
+$sql = "SELECT * FROM doctors ";
 $result = $conn->query($sql);
         
 
@@ -142,22 +143,22 @@ $result = $conn->query($sql);
 	// output data of each row
 	$sno = 0;
     while($row = $result->fetch_assoc()) {
-		$pid = $row['userid'];
-		$pname = $row['name'];
-		$pmail = $row['email'];
-		$pdate = $row['date'];
-		$ptime = $row['timeslot']; 
+		$did = $row['doctorID'];
+		$dname = $row['doct_name'];
+		$dmail = $row['doct_mail'];
+		$dphone = $row['doct_phone'];
+		$dspec = $row['doct_spec']; 
 		$sno +=1; ?>
 
 		
 
 		<tr> <td><?php echo $sno; ?> </td>
-		<td><?php echo $pname; ?></td>
-		<td><?php echo $pmail;?></td>
-		<td><?php echo $pdate;?></td>
-		<td><?php echo $ptime;?></td>
+		<td><?php echo $dname; ?></td>
+		<td><?php echo $dmail;?></td>
+		<td><?php echo $dphone;?></td>
+		<td><?php echo $dspec;?></td>
 		<td><a href="ViewDetails.php?id=<?php echo $pid; ?>">
-		<span style="color: white; background-color:red;">View Details</span></a></td>
+		<span style="color: white; background-color:red;">Edit Details</span></a></td>
 		</tr>
 		
     <?php } ?>

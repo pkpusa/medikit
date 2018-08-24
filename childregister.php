@@ -60,7 +60,7 @@ while($row=mysqli_fetch_array($result2)){
 
 if($flag==1){
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.location.href='index.php?value=1';
+    window.location.href='childIndex.php?value=1';
     </SCRIPT>");
 	die("");
 	//echo "oh yes";
@@ -76,7 +76,7 @@ else{
 
 
 	///$_SESSION['name']=$fname;
-	//header("location:index.php");
+	header("location:viewChild.php?value=0");
 	
 }
 

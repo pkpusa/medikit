@@ -32,6 +32,7 @@ $sql2="select * from $tbl_name";
 $result2=mysqli_query($conn,$sql2);
 $flag=0;
 while($row=mysqli_fetch_array($result2)){
+	if($row['doctorID']==$doctorid ){
 	if($row['date']==$date ){
         if($row['timeslot']==$time ){
         
@@ -40,7 +41,7 @@ while($row=mysqli_fetch_array($result2)){
 		break;
 	}
 }
-
+}
 }
 
 if($flag==1){
@@ -64,25 +65,7 @@ else{
 	//header("location:index.php");
 	
 }
-
-
 ?>
-
-
-<?php
-session_start();
-
-?>
-
-
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
-
 
 <!DOCTYPE HTML>
 <html>
@@ -182,17 +165,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
         </div>
         <a href="doctorBooking.php?value=0"><input type ="button" value="New Booking" style ="background-color: #4CAF50; color: white; width:30%; height:50px;"></a>
-        <a href="index.php"><input type="button" value="Home" style="background-color: #008CBA; color: white; width:30%; height:50px;"></a>
-                            
-					
-				
-        
-		<!--// Form starts here -->
-	
+        <a href="index.php"><input type="button" value="Home" style="background-color: #008CBA; color: white; width:30%; height:50px;"></a>	
 	<!--copyright-->
 	<div class="copyright">
 		<p>&copy; 2018 MediKit  . All Rights Reserved | Design by
-			<a href="http://w3layouts.com/" target="_blank">MediKit Team</a>
+			<a href="http://w3layouts.com/" target="_blank">Prakash Thakur</a>
 		</p>
 	</div>
 	<!--//copyright-->

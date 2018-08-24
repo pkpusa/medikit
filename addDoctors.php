@@ -1,10 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['doct_name'])){
-	$doctor = $_SESSION['doctorID'];
+if(isset($_SESSION['admin_name'])){
+	$admin = $_SESSION['admin_id'];
 }
 	else{
-		header("location:doctorlogin.php?value=0");
+		header("location:adminlogin.php?value=0");
 		
 	}
 ?>

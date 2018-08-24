@@ -5,50 +5,40 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	-->
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav style="background-color:black;">
   <div class="container-fluid">
+	<ul><li>
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a style ="color :red; font-size:50px;" href="index.php?value=0">MediKit</a></br>
+	  <a style ="color :aqua; font-size:20px;font-variant: small-caps;" href="#">An Online Medical Expert System</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-
-   </p>
-	
-			
-    <ul class="nav navbar-nav navbar-right">
-       <li><a> <?php
-                session_start();
+	</li>
+	<li>         <div style="float:right; font-size:20px;">
+			<p style ="color:white; font-size:25px;">
+            <?php
+            
 			 if(isset($_SESSION['userid']))	
 			 {
-             echo "Welcome,   ".$_SESSION['name'];
-             ?>
-             </a></li>
-            <li> <a href=\"logout.php\" class=\"btn btn-info\">Logout</a></li>
-			<?php } 
-			  else
-			 { ?> 
-            </li>
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-           <?php } ?>
+			 echo "Welcome,   ".$_SESSION['name']."&nbsp;&nbsp;&nbsp;<a href=\"logout.php\" class=\"btn btn-info\">Logout</a>";
+			 }
+			 else
+			 {
+        ?></p>
+				<a href="userlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="usersignup.php?value=0" class="btn btn-info">Signup</a>
+			<?php } ?>
+			
+			
+			</div></li>
     </ul>
-  </div>
+</div>
 </nav>
   
 

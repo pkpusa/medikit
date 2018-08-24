@@ -1,6 +1,7 @@
 
 <?php 
 	require "usrsessioncontrol.php";
+	include "testing.php";
 ?>
 <!--A Design by W3layouts
 Author: W3layout
@@ -8,7 +9,43 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+$servername = "localhost";
+$username = "root";
+//$password = " ";
+$dbname = "medikit";
 
+// Create connection
+$conn = mysqli_connect("$servername", "$username")or die("cannot connect");
+// Check connection
+mysqli_select_db($conn,"$dbname")or die("cannot select DB");
+
+$tbl_name = "doctors";
+/*if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}*/
+$sql = "SELECT doctorID, doct_name, doct_spec FROM $tbl_name ORDER BY doctorID ASC";
+//$sql = "SELECT id, firstname, lastname FROM doctors//";
+$result = mysqli_query($conn, $sql);
+
+
+
+
+//$get = $conn->query($sql);
+//$result=mysqli_query($conn,$get) or trigger_error($get);
+$spec ="Specialist";
+$option = '';
+ //while($row = $get->fetch_assoc())
+ if (mysqli_num_rows($result) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result))
+
+{
+  $opt = $row['doct_name']." (".$row["doct_spec"]." ".$spec.")";
+  $option .= '<option value = "'.$row['doctorID'].'">'.$opt.'</option>';
+}
+ }
+?>
 
 
 <!DOCTYPE HTML>
@@ -158,11 +195,17 @@ form {
 							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 							<input type="email" name="email" placeholder="Email" required="">
 						</div>
+						<div  class="field-agileinfo-spc form-w3-agile-text1">
+						<select class="form-control" name="doctor"> 
+							<option selected='true' disabled='true'> Choose Doctor </option>
+								<?php echo $option; ?>
+						</select>
+						</div>
 						<div class="clearfix"> </div>
 						<div class="agileits_reservation_grid">
 							<div  class="span1_of_1 book_date"> 
 								<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-								<input class="date" id="datepicker" name="date" placeholder="Select Date"  type="text" required="">
+								<input class="date" id="datepicker" name="date" placeholder="Select Date"  type="date" required="" max ="<?php echo date('Y-m-d',time()+60*60*24*90);?>" min="<?php echo date('Y-m-d')?>" value="<?php if(isset($_POST['date'])){echo $_POST['date'];}else {echo date('Y-m-d');}?>">
 							</div>
 							<!--<div class="span1_of_1 section_room"> 
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
@@ -209,41 +252,42 @@ form {
     
     
     <!-- displaying booked date and time -->
-    <div class="opc" style="top:20%;  position:fixed; width:600px; margin-left:1100px;">
-    <div action="delete.php" method="post" style="border-radius: 20px; background-color: #f2f2f2; width:35%;"> <div class="tbl">
-    <span style="color: red; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; font-size: 20px;">
+    <div style="margin-left:1100px; top:250px; position:fixed; background-color:lightgrey;">
+    <div action="delete.php" method="post" style="border-radius: 20px; background-color: ;"> <div class="tbl">
+    <span style="color: black; text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px blue; font-size: 15px;">
     <div>
         
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "medikit";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql = "SELECT date, timeslot FROM booking";
-$result = $conn->query($sql);
-        
-if ($result->num_rows > 0) {
-    echo"Booked Slots:";
-    echo "<table><tr><th>Date </th><th>Time :</th></tr>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["date"]. "</td><td>" . $row["timeslot"]. "</td></tr>";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
-
-$conn->close();
-            ?>
+        <?php
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "medikit";
+		
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		} 
+		
+		$sql = "SELECT doctors.doctorId, doctors.doct_name, booking.date, booking.timeslot FROM booking INNER JOIN doctors ON booking.doctorID  = doctors.doctorID";
+		$result = $conn->query($sql);
+				
+		if ($result->num_rows > 0) {
+			echo"Booked Slots for this Week:";
+			echo "<table><tr><th>Doctor </th><th>Date </th><th>Time :</th></tr>";
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				echo "<tr><td>" . $row["doct_name"]. "</td><td>" . $row["date"]. "</td><td>" . $row["timeslot"]. "</td></tr>";
+			}
+			echo "</table>";
+		} else {
+			echo "0 results";
+		}
+		
+		$conn->close();
+					?>
     
         </div>
     </span><br> <br></div>
@@ -255,7 +299,7 @@ $conn->close();
 	<script src="jsChild/jquery-ui.js"></script>
 	<script>
 		$(function () {
-			$("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
+			//$("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
 		});
 	</script>
 	<!-- //Calendar Js -->

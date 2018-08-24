@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>MediBulk a Medical Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>MediKit - Home</title>
 <!-- for-mobile-apps -->
 <!--/metadata -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">MediKit</a>
+      <a style ="color :red; font-size:50px;" href="#">MediKit</a></br>
+	  <a style ="color :aqua; font-size:20px;font-variant: small-caps;" href="#">An Online Medical Expert System</a>
     </div>
 	<ul style="float:right; font-size:20px;margin-top:20px;">
 	<li>          <div style="float:right; font-size:20px;margin-top:20px;">
@@ -75,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"></span>
 					</button>
 					<div class="w3_navigation_pos">
-						<h1><a href="index.html">MEDIKIT</a></h1>
+						<h1><a href="index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEDIKIT</a></h1>
 					</div>
 				</div>
       
@@ -85,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="home.php?value=0">Home</a></li>
 							<li><a href="about.html">About Us</a></li>
-							<li><a href="services.html">Our Services</a></li>
+							<li><a class="scroll" target="services" href="#">Our Services</a></li>
 							
 							<li><a href="gallery.html">Our Doctors</a></li>
 							
@@ -95,7 +96,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul class="dropdown-menu">
 										<li><a href="icons.html"></a></li>
                                         <li></li>
-										<li><a href="typography.html">Typography</a></li>
+										<li><a href="doctorpage.php?value=0">Doctor Login</a></li>
+										<li><a href="adminlogin.php?value=0">Admin Login</a></li>
 									</ul>
 							  </li>
 							
@@ -304,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 w3-services-grids1">
 			<div class="w3-services-grid1">
 			<a href="viewChild.php?value=0"><i class="fa fa-user-md" aria-hidden="true"></i></a>
-				<h3> Special Team</h3>
+				<h3> View CHild Details</h3>
 				<div class="w3-services-grid1-left">
 					<h4></h4>
 					<p></p>
@@ -334,7 +336,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid3">
 			<i class="fa fa-hospital-o" aria-hidden="true"></i>
-				<h3>Symptom Checker</h3>
+				<h3>Feedback</h3>
 			<div class="w3-services-grid1-left">
 					<h4> </h4>
 					<p></p>
@@ -368,7 +370,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid5">
 							<i class="fa fa-flask" aria-hidden="true"></i>
-				<h3>Ability Test</h3>
+				<h3>Symptom Checker</h3>
 				<div class="w3-services-grid1-left">
 					<h4></h4>
 					<p></p>
@@ -615,6 +617,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
 
 </body>
+
+<script>
+$('.scroll').click(function() {
+    $('body').animate({
+        scrollTop: eval($('#' + $(this).attr('services')).offset().top - 70)
+    }, 1000);
+});
+
+</script>
 </html>
     
 <?php

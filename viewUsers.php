@@ -62,6 +62,7 @@ td,th {
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(odd){background-color: #f2f2f2;}
 
 tr:hover {background-color: #ddd;}
 
@@ -73,21 +74,9 @@ th {
     color: white;
 }
 </style>
-
+<?php include "navbar.php" ?>
 <body>
-		<div style="float:right; font-size:20px;margin-top:20px;">
-			<p style ="color:white; font-size:25px;">
-            <?php
-			 if(isset($_SESSION['doctorID']))	
-			 {
-			 echo "Welcome,   ".$_SESSION['doct_name']."&nbsp;&nbsp;&nbsp;<a href=\"doctorlogout.php\" class=\"btn btn-info\">Logout</a>";
-			 }
-			 else
-			 {
-                ?></p>
-				<a href="doctorlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="usersignup.php?value=0" class="btn btn-info">Signup</a>
-			<?php } ?>
+		
 			
 			
 			</div
@@ -126,7 +115,7 @@ th {
                 ?></p>
 				<a href="doctorlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="usersignup.php?value=0" class="btn btn-info">Signup</a>
-			<?php } ?>
+			<?php } ?>	
     
     </h1>
 	<div class="register-form-w3layouts">
