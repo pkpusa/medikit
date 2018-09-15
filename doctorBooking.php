@@ -177,7 +177,35 @@ form {
 			//else{ echo "hi";}
 		?>
 	<!--background-->
+
+<!--   Javascript function for changing the booking slots on the page without refreshing -->
+	<script>
+function showUser(str) {
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","getuser.php?q="+str,true);
+        xmlhttp.send();
+		
+    }
+}
+</script>
     <h1><a href ="localhost/web/index.html"> </a> Doctor Appointment Booking </h1>
+	<div>
+	<div style="float:left; margin-left:100px;">
 	<div class="register-form-w3layouts">
         <h3 class="sub-heading-agileits">Enter Details for Appointment</h3>
 		<!-- Form starts here -->
@@ -196,7 +224,7 @@ form {
 							<input type="email" name="email" placeholder="Email" required="">
 						</div>
 						<div  class="field-agileinfo-spc form-w3-agile-text1">
-						<select class="form-control" name="doctor"> 
+						<select class="form-control" name="doctor" onchange="showUser(this.value)"> 
 							<option selected='true' disabled='true'> Choose Doctor </option>
 								<?php echo $option; ?>
 						</select>
@@ -249,16 +277,18 @@ form {
 			<a href="http://w3layouts.com/" target="_blank">MediKit Team</a>
 		</p>
 	</div>
-    
-    
+	</div>
+	<div style="float:right; margin-right:250px; margin-top:100px;">
     <!-- displaying booked date and time -->
-    <div style="margin-left:1100px; top:250px; position:fixed; background-color:lightgrey;">
-    <div action="delete.php" method="post" style="border-radius: 20px; background-color: ;"> <div class="tbl">
-    <span style="color: black; text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px blue; font-size: 15px;">
-    <div>
-        
-
+    <div  class="register-form-w3layouts">
+	<div style ="color :white;">
+	<div id="txtHint"><b>Booked Slots will be displayed here.....</b></div>
+	</div>	
+	</div>	
+	</div>
+	</div>
         <?php
+		/*
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
@@ -287,12 +317,10 @@ form {
 		}
 		
 		$conn->close();
-					?>
+					*/?>
     
-        </div>
-    </span><br> <br></div>
-</div>
-</div>
+    
+
 	<!--//copyright-->
 	<script type="text/javascript" src="jsChild/jquery-2.2.3.min.js"></script>
 	<!-- Calendar Js -->

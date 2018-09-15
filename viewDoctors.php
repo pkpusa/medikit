@@ -120,12 +120,12 @@ th {
 	<div class="register-form-w3layouts">
 		<!-- Form starts here -->
 		<form action="doctorlogout.php" method="post">
-		<table><tr><th>S No. </th><th>Name </th><th>email</th><th>Phone</th><th>Specialization</th><th>		</th></tr>
+		<table><tr><th>S No. </th><th>Name </th><th>email</th><th>Phone</th><th>Specialization</th><th>Address</th><th>		</th></tr>
 		<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "medikit";
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "medikit";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -148,6 +148,7 @@ $result = $conn->query($sql);
 		$dmail = $row['doct_mail'];
 		$dphone = $row['doct_phone'];
 		$dspec = $row['doct_spec']; 
+		$daddr = $row['address'];
 		$sno +=1; ?>
 
 		
@@ -157,6 +158,7 @@ $result = $conn->query($sql);
 		<td><?php echo $dmail;?></td>
 		<td><?php echo $dphone;?></td>
 		<td><?php echo $dspec;?></td>
+		<td><?php echo $daddr;?></td>
 		<td><a href="ViewDetails.php?id=<?php echo $pid; ?>">
 		<span style="color: white; background-color:red;">Edit Details</span></a></td>
 		</tr>

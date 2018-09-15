@@ -21,9 +21,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!DOCTYPE HTML>
 <html>
-
 <head>
-	<title>Medikit- Doctors Home</title>
+	<title>Medikit User Registration</title>
 	<!-- Meta tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -38,6 +37,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			window.scrollTo(0, 1);
 		}
 	</script>
+    
+    <script>
+function check1()
+	{
+		var c=document.forms["usersignup"]["psd"].value;
+		//alert(c.length);
+		if(c.length < 8 )
+		{
+			document.getElementById("ps").innerHTML="<br/><font color=red>password must be atleast 8 - 32 char long</font>";
+			return false;
+		}
+		else
+		{
+			document.getElementById("ps").innerHTML="";
+			pass=c;
+			return true;
+			//sub++;
+			//valid1();
+		//	alert(sub);
+		}
+	}
+// confirm password
+	function confirm1()
+	{
+		var c=document.forms["usersignup"]["cpsd"].value;
+		//alert(c);
+		if(c!=pass)
+		{
+			document.getElementById("cps").innerHTML="<br/><font color=red>password not match </font>";
+			return false;
+		}
+		else
+		{
+			document.getElementById("cps").innerHTML="";
+			//sub++;
+			return true;
+			//valid1();
+			//alert(sub);
+		}
+	}
+</script>
+
+    
 	<!-- //Meta tags -->
 	<!-- Stylesheet -->
 	<link rel="stylesheet" href="cssChild/jquery-ui.css" />
@@ -47,51 +89,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet">
 	<!--//fonts-->
 </head>
-<style>
-
-/* Style design for viewing no of patents*/
-table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td,th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
-
-th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
-</style>
-
+<?php 
+	include "navbar.php";
+?>
 <body>
-		<div style="float:right; font-size:20px;margin-top:20px;">
-			<p style ="color:white; font-size:25px;">
-            <?php
-			 if(isset($_SESSION['doctorID']))	
-			 {
-			 echo "Welcome,   ".$_SESSION['doct_name']."&nbsp;&nbsp;&nbsp;<a href=\"doctorlogout.php\" class=\"btn btn-info\">Logout</a>";
-			 }
-			 else
-			 {
-                ?></p>
-				<a href="doctorlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="usersignup.php?value=0" class="btn btn-info">Signup</a>
-			<?php } ?>
-			
-			
-			</div
-
     <?php
 			if(isset($_SESSION['error']))
 			{
@@ -109,67 +110,94 @@ th {
 			}
 			//else{ echo "hi";}
 		?>
-
-	<?php 
-
-	?>
-
 	<!--background-->
-    <h1><a href ="localhost/web/index.html"> </a>MediKit Doctor Login Portal</h1>
+	<h1>
+    <div class="w3-heading-all services-head">
+			<h3><?php
+			 if(isset($_SESSION['admin_id']))	
+			 {
+			 echo "Welcome,   ".$_SESSION['admin_name']."&nbsp;&nbsp;&nbsp;<a href=\"adminlogout.php\" class=\"btn btn-info\">Logout</a>";
+			 }
+			 else
+			 {
+                ?></p>
+				<a href="adminlogin.php?value=0" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="home.php?value=0" class="btn btn-info">HomePage</a>
+			<?php } ?></h3>
+		</div>	
+	</h1>
 	<div class="register-form-w3layouts">
 		<!-- Form starts here -->
-		<form action="doctorlogout.php" method="post">
-		<table><tr><th>S No. </th><th>Name </th><th>email</th><th>date</th><th>timeslot</th><th>		</th></tr>
-		<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "medikit";
+		<form name ="usersignup" action="doctoradding.php" method="post">
+			<h3 class="sub-heading-agileits">DOCTOR REGISTRATION : </h3>
+            <?php
+	$val=$_GET['value'];
+	if($val==1){
+	?>
+<h3><a>User already exists</a></h3>
+	<?php
+	}
+	
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql = "SELECT * FROM booking WHERE doctorID = $doctor";
-$result = $conn->query($sql);
-        
-
-
-    
-	// output data of each row
-	$sno = 0;
-    while($row = $result->fetch_assoc()) {
-		$pid = $row['userid'];
-		$pname = $row['name'];
-		$pmail = $row['email'];
-		$pdate = $row['date'];
-		$ptime = $row['timeslot']; 
-		$sno +=1; ?>
-
-		
-
-		<tr> <td><?php echo $sno; ?> </td>
-		<td><?php echo $pname; ?></td>
-		<td><?php echo $pmail;?></td>
-		<td><?php echo $pdate;?></td>
-		<td><?php echo $ptime;?></td>
-		<td><a href="ViewDetails.php?id=<?php echo $pid; ?>">
-		<span style="color: white; background-color:red;">View Details</span></a></td>
-		</tr>
-		
-    <?php } ?>
-
+?>
 			
+				<div class="field-agileinfo-spc form-w3-agile-text2">
+					<input type="text" name="fname" placeholder="Enter Doctor Name" required="">
+				</div>
+            <!--<div class="field-agileinfo-spc form-w3-agile-text2">
+					<input type="text" name="uname" placeholder="Enter Name" required="">
+				
+			</div>-->
+			<div class="field-agileinfo-spc form-w3-agile-text2">
+					<input type="email" name="mail" placeholder="Enter Email" required="">
+				
+			</div>
+            <div class="field-agileinfo-spc form-w3-agile-text2">
+				<input type="text" name="mob" placeholder="Phone Number" required="" pattern="[789][0-9]{9}">
+            </div>
+
+			<div class="field-agileinfo-spc form-w3-agile-text2">
+				<input type="text" name="spec" placeholder="Doctor Specialization" required="">
+			</div>
+
+			<div class="field-agileinfo-spc form-w3-agile-text2">
+					<input type="text" name="addr" placeholder="Address" required="">
+			</div>
+            
+            <div class="field-agileinfo-spc form-w3-agile-text2">
+					<input style="width: 100%;
+    font-weight: 300;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    padding: 10px 10px;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.27);
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;" type="password" name="psd" placeholder="Enter Password" required="" onblur="return check1()"><span id="ps" ></span>
+				
+			</div>
+            <div class="field-agileinfo-spc form-w3-agile-text2">
+					<input style="width: 100%;
+    font-weight: 300;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    padding: 10px 10px;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.27);
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;" type="password" name="cpsd" placeholder="Re-Enter Password" required="" onblur="return confirm1()"><span id="cps" ></span>
+				
+			</div>
+			<input type="submit" value="Sign Up">
+			<input type="reset" value="Already Have an Account">
 			<div class="clear"></div>
-			</table>
-			<input type="submit" value="Logout">
-			<input type ="reset" value ="Home Page" onclick="Redirect();">
-			
 		</form>
-		
 		<!--// Form starts here -->
 	</div>
 	<!--copyright-->
@@ -190,14 +218,8 @@ $result = $conn->query($sql);
 	<!-- //Calendar Js -->
 
 </body>
-<script>
-function Redirect()	
-{
-	window.location="home.php";
-}
-</script>
+
 </html>
-<!--
 <?php
 if(isset($_SESSION['error']))
 {
@@ -206,4 +228,4 @@ echo "<script>document.getElementById(\"wrong\").style.visibility=\"\";</script>
 session_destroy();
 }
 
-?>	-->
+?>	

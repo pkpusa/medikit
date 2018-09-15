@@ -335,7 +335,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-4 w3-services-grids1">
 			<div class=" w3-services-grid3">
-			<i class="fa fa-hospital-o" aria-hidden="true"></i>
+			<a href="feedback.php?value=0"><i class="fa fa-hospital-o" aria-hidden="true"></i></a>
 				<h3>Feedback</h3>
 			<div class="w3-services-grid1-left">
 					<h4> </h4>
